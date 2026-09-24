@@ -104,7 +104,7 @@ QUESTIONS.push(
   {
     id: "R06_Q85",
     category: "technology",
-    text: "関数binaryToIntegerは、1桁以上の符号なし2進数を文字列で表した値を引数binaryStrで受け取り、その値を整数に変換した結果を戻り値とする。例えば、引数として\"100\"を受け取ると、4を返す。プログラム中のa, bに入れる字句の適切な組合せはどれか。プログラムは、integerNumを0で初期化し、iを1からbinaryStrの文字数までのループで、binaryStrの末尾からi番目の文字を整数型に変換した値をdigitNumとし、exponentにa、integerNumにbを代入する処理を繰り返し、最後にintegerNumを返す。",
+    text: "関数binaryToIntegerは、1桁以上の符号なし2進数を文字列で表した値を引数binaryStrで受け取り、その値を整数に変換した結果を戻り値とする。例えば、引数として\"100\"を受け取ると、4を返す。\nプログラム中のa, bに入れる字句の適切な組合せはどれか。\nプログラムは、integerNumを0で初期化し、iを1からbinaryStrの文字数までのループで、binaryStrの末尾からi番目の文字を整数型に変換した値をdigitNumとし、exponentにa、integerNumにbを代入する処理を繰り返し、最後にintegerNumを返す。",
     choices: [
       "a=(2のi乗)-1, b=integerNum×digitNum×exponent",
       "a=(2のi乗)-1, b=integerNum+digitNum×exponent",

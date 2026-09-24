@@ -476,10 +476,10 @@ function renderResultsView(historyEntry, auto) {
       const item = document.createElement("li");
       let label = choiceText;
       if (index === question.answerIndex) {
-        label += "(正解)";
+        label = "✔正解 " + label;
       }
       if (index === userAnswerIndex && userAnswerIndex !== question.answerIndex) {
-        label += "(あなたの回答)";
+        label = "✖あなたの回答 " + label;
       }
       item.textContent = label;
       item.className = index === question.answerIndex

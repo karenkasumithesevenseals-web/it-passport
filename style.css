@@ -56,8 +56,10 @@ button {
   cursor: pointer;
 }
 
-button:hover:not(:disabled) {
-  background: #3a5ce0;
+@media (hover: hover) {
+  button:hover:not(:disabled) {
+    background: #3a5ce0;
+  }
 }
 
 button:disabled {
@@ -110,7 +112,7 @@ button:disabled {
   font-size: 1.05rem;
   line-height: 1.6;
   margin: 0 0 16px;
-  white-space: pre-line;
+  white-space: pre-wrap;
 }
 
 .question-images {
@@ -128,24 +130,65 @@ button:disabled {
 .choices {
   display: flex;
   flex-direction: column;
-  gap: 8px;
-  margin-bottom: 16px;
+  gap: 10px;
+  margin-bottom: 24px;
 }
 
 .choice-btn {
-  background: #f4f4f8;
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 12px 14px;
+  background: #fff;
+  border: 1px solid #c5c8d6;
   color: #222;
+  font-size: 1.05rem;
+  line-height: 1.6;
   text-align: left;
+  transition: transform 0.08s;
 }
 
-.choice-btn:hover:not(:disabled) {
-  background: #e8e8f0;
+/* 選択肢の頭に「ア〜エ」の記号を付ける(折り返した行は記号の右に揃う) */
+.choice-btn::before {
+  flex: 0 0 1.8em;
+  height: 1.8em;
+  border: 1px solid #c5c8d6;
+  border-radius: 50%;
+  background: #fff;
+  color: #4a6cf7;
+  font-weight: bold;
+  line-height: 1.8em;
+  text-align: center;
+}
+
+.choice-btn:nth-child(1)::before { content: "ア"; }
+.choice-btn:nth-child(2)::before { content: "イ"; }
+.choice-btn:nth-child(3)::before { content: "ウ"; }
+.choice-btn:nth-child(4)::before { content: "エ"; }
+
+/* スマホでは押した後も hover が残るので、マウスのある端末だけに限定 */
+@media (hover: hover) {
+  .choice-btn:not(.selected):hover:not(:disabled) {
+    background: #eef2ff;
+  }
+}
+
+.choice-btn:active {
+  transform: scale(0.98);
 }
 
 .choice-btn.selected,
 .choice-btn.selected:hover {
   background: #4a6cf7;
+  border: 2px solid #2f4fd6;
+  padding: 11px 13px;
   color: #fff;
+  font-weight: bold;
+}
+
+.choice-btn.selected::before {
+  content: "✓";
+  border-color: #fff;
 }
 
 .jump-grid {
@@ -296,20 +339,44 @@ button:disabled {
 .review-question-text {
   font-weight: bold;
   margin: 0 0 8px;
-  white-space: pre-line;
+  white-space: pre-wrap;
 }
 
 .review-choices {
+  list-style: none;
   margin: 0 0 8px;
-  padding-left: 20px;
+  padding-left: 0;
 }
 
+.review-choices li {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 6px;
+  padding: 4px 8px;
+  border-left: 4px solid transparent;
+  line-height: 1.6;
+}
+
+.review-choices li::before {
+  flex: 0 0 1.2em;
+  font-weight: bold;
+}
+
+.review-choices li:nth-child(1)::before { content: "ア"; }
+.review-choices li:nth-child(2)::before { content: "イ"; }
+.review-choices li:nth-child(3)::before { content: "ウ"; }
+.review-choices li:nth-child(4)::before { content: "エ"; }
+
 .review-choices .correct-choice {
+  background: #e8f6ec;
+  border-left-color: #1a8a3a;
   color: #1a8a3a;
   font-weight: bold;
 }
 
 .review-choices .wrong-choice {
+  background: #fdecec;
+  border-left-color: #d33;
   color: #d33;
 }
 
